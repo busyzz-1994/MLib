@@ -1,0 +1,98 @@
+@import './btn-var.scss';
+
+.qzz-btn {
+  display: inline-block;
+  box-sizing: border-box;
+  height: $btn-height-normal;
+  line-height: $btn-height-normal;
+  padding: 0 15px;
+  outline: none;
+  border: 1px solid $btn-gray;
+  border-radius: 2px;
+  background: $btn-white;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s;
+  color: $theme-stroke-1;
+  font-size: $btn-size-normal;
+  font-family: inherit;
+
+  >a {
+    color: $theme-stroke-1;
+  }
+
+  &:hover {
+    color: $btn-primary-hover;
+    border-color: $btn-primary-hover;
+
+    >a {
+      color: $btn-primary-hover;
+    }
+  }
+
+  &:active {
+    color: $theme-stroke-1;
+    background: $btn-light-gray;
+    border-color: $btn-gray;
+  }
+
+  //颜色
+  &-primary {
+    color: $btn-white;
+    background: $btn-primary;
+    border-color: $btn-primary;
+
+    &:hover {
+      color: $btn-white;
+      background: $btn-primary-hover;
+    }
+  }
+
+  &-danger {
+    color: $btn-white;
+    background: $btn-danger;
+    border-color: $btn-danger;
+
+    &:hover {
+      color: $btn-white;
+      background: $btn-danger-hover;
+      border-color: $btn-danger-hover;
+    }
+
+    &:active {
+      color: $btn-white;
+      background: $btn-danger-active;
+      border-color: $btn-danger-active;
+    }
+  }
+
+  //size
+  &-small {
+    height: 26px;
+    line-height: 24px;
+    padding: 0 7px;
+  }
+
+  &-large {
+    height: 38px;
+    line-height: 36px;
+    padding: 0 23px;
+    font-size: 14px;
+  }
+
+  &-block {
+    display: block;
+    width: 100%;
+    padding: 0;
+  }
+
+  //disabled
+  &[disabled] {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+}
+
+.qzz-btn+.qzz-btn {
+  margin-left: 10px;
+}
