@@ -1,25 +1,34 @@
 import React, { Component, Fragment } from 'react';
-import { Button as Zent } from 'zent';
+// import { Loading as Zent } from 'zent';
 import Btn from 'components/button';
+// import Loading from 'components/loading';
 import 'zent/css/index.css';
-export default class Demo extends Component {
+// import styles from './index.module.scss';
+// import { Spin } from 'antd';
+import 'antd/dist/antd.css';
+export default class Demo extends Component<any, any> {
+  constructor(props) {
+    super(props);
+    this.state = {
+      loading: false
+    };
+  }
+  handleLoading = () => {
+    this.setState(prevState => ({
+      loading: !prevState.loading
+    }));
+  };
+  componentDidMount() {}
+
   render() {
+    // let { loading } = this.state;
     return (
       <Fragment>
         <div style={{ marginLeft: 20 }}>
+          <div style={{ marginTop: 20 }}>1</div>
+          <div style={{ marginTop: 20 }}>2</div>
           <div style={{ marginTop: 20 }}>
-            <Zent>按钮</Zent>
-            <Zent type="primary">按钮</Zent>
-            <Zent type="danger">按钮</Zent>
-          </div>
-          <div style={{ marginTop: 20 }}>
-            <Btn className="test">按钮</Btn>
-            <Btn disabled={true} type="primary">
-              按钮
-            </Btn>
-            <Btn size="small" type="danger">
-              按钮
-            </Btn>
+            <Btn onClick={this.handleLoading}>toggle</Btn>
           </div>
         </div>
       </Fragment>

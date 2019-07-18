@@ -1,0 +1,160 @@
+$spin-dot-size-sm: 14px;
+$spin-dot-size: 20px;
+$spin-dot-size-lg: 32px;
+
+@mixin size($width, $height) {
+  width: $width;
+  height: $height;
+}
+
+@mixin square($size) {
+  @include size($size, $size);
+}
+
+.qzz-spin-container {
+  position: relative;
+
+  .qzz-spin {
+    &-spinning {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 99;
+      display: block;
+
+      &-text {
+        position: absolute;
+        top: 50%;
+        width: 100%;
+        padding-top: 10px;
+      }
+    }
+
+    &-dot {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      margin: -10px;
+      margin-top: -15px;
+
+      &-large {
+        margin: -16px;
+        margin-top: -26px;
+      }
+
+      &-small {
+        margin: -6px;
+        margin-top: -10px;
+      }
+    }
+
+    &-children {
+      &-box {
+        transition: opacity .5s;
+        opacity: 0.5;
+      }
+    }
+  }
+}
+
+.qzz-spin {
+  &-spinning {
+    display: inline-block;
+    text-align: center;
+
+    &-text {
+      color: #f00;
+    }
+  }
+
+  //loading图像
+  &-dot {
+    position: relative;
+    display: inline-block;
+    font-size: $spin-dot-size;
+    @include square(1em);
+
+    &-large {
+      font-size: $spin-dot-size-lg;
+
+      i {
+        width: 14px;
+        height: 14px;
+      }
+    }
+
+    &-small {
+      font-size: $spin-dot-size-sm;
+
+      i {
+        width: 6px;
+        height: 6px;
+      }
+    }
+
+    &-item {
+      position: absolute;
+      display: block;
+      width: 9px;
+      height: 9px;
+      background-color: #f00;
+      border-radius: 100%;
+      transform: scale(0.75);
+      transform-origin: 50% 50%;
+      opacity: 0.3;
+      animation: antSpinMove 1s infinite linear alternate;
+
+      &:nth-child(1) {
+        top: 0;
+        left: 0;
+      }
+
+      &:nth-child(2) {
+        top: 0;
+        right: 0;
+        animation-delay: 0.4s;
+      }
+
+      &:nth-child(3) {
+        right: 0;
+        bottom: 0;
+        animation-delay: 0.8s;
+      }
+
+      &:nth-child(4) {
+        bottom: 0;
+        left: 0;
+        animation-delay: 1.2s;
+      }
+    }
+
+    &-spin {
+      transform: rotate(45deg);
+      animation: antRotate 1.2s infinite linear;
+    }
+
+
+  }
+
+  &-indicator {
+    display: block;
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    margin-top: -16px;
+  }
+}
+
+@keyframes antSpinMove {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes antRotate {
+  to {
+    transform: rotate(405deg);
+  }
+}

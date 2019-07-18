@@ -1,9 +1,12 @@
 import React from 'react';
 import classnames from 'classnames';
+import { Omit } from 'utility-types';
 import 'assets/button/index.scss';
 type ButtonTypes = 'primary' | 'danger' | 'success';
 type ButtonSize = 'small' | 'large' | 'normal';
-interface IButtonProps {
+
+interface IButtonProps
+  extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'type'> {
   type?: ButtonTypes;
   size?: ButtonSize;
   block?: boolean;
@@ -12,6 +15,7 @@ interface IButtonProps {
   target?: '_blank' | '_self';
   className?: string;
   style?: React.CSSProperties;
+  onClick?: React.MouseEventHandler;
 }
 export default class Button extends React.Component<IButtonProps> {
   render() {
@@ -24,7 +28,9 @@ export default class Button extends React.Component<IButtonProps> {
       href,
       target = '_blank',
       className,
-      style
+      style,
+      onClick,
+      ...rest
     } = this.props;
     let classes = classnames(
       'qzz-btn',
@@ -46,7 +52,15 @@ export default class Button extends React.Component<IButtonProps> {
       child = <span>{children}</span>;
     }
     return (
-      <button style={style} disabled={disabled} className={classes}>
+      <button
+        onClick={e => {
+          onClick && onClick(e);
+        }}
+        style={style}
+        disabled={disabled}
+        className={classes}
+        {...rest}
+      >
         {child}
       </button>
     );
