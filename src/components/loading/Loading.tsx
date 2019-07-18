@@ -7,7 +7,7 @@ interface SpinProps {
   size?: DotSize;
   delay?: number;
   tip?: string;
-  wrapperClassName?: React.CSSProperties;
+  wrapperClassName?: string;
   indicator?: React.ReactElement;
 }
 interface SpinState {
@@ -92,7 +92,7 @@ export default class Loading extends React.Component<SpinProps, SpinState> {
     clearInterval(this.timer);
   }
   render() {
-    let { size = 'default', children, wrapperClassName } = this.props;
+    let { children, wrapperClassName } = this.props;
     let { spinning } = this.state;
     let ele = null;
     ele = spinning && renderIndicator(this.props);
