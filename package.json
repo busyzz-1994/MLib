@@ -18,7 +18,7 @@
     "mobx": "^5.9.4",
     "mobx-react": "^5.4.3",
     "mobx-react-devtools": "^6.1.1",
-    "node-sass": "^4.12.0",
+    "node-sass": "^4.13.1",
     "pre-commit": "^1.2.2",
     "preval.macro": "^3.0.0",
     "react": "^16.8.6",
@@ -32,7 +32,7 @@
   },
   "devDependencies": {
     "jest-puppeteer": "^4.0.0",
-    "node-sass": "^4.12.0"
+    "node-sass": "^4.13.1"
   },
   "scripts": {
     "iconfont": "node scripts/iconfont.js",
